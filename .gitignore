@@ -1,0 +1,18 @@
+# Dependencies (Too big, can be re-installed)
+node_modules/
+
+# Database (Generated automatically, don't share your local data)
+database.sqlite
+
+# Uploads (Don't share temporary files)
+uploads/*
+
+# Environment variables (Security risk)
+.env
+
+# System files (Mac/Windows junk)
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log

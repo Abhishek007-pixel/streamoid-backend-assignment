@@ -1,0 +1,31 @@
+{
+  "name": "streamoid_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "csv-parser": "^3.2.0",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.16.3",
+    "sqlite3": "^5.1.7",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "nodemon": "^3.1.0"
+  }
+}
