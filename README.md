@@ -85,8 +85,13 @@ curl -X POST -F "file=@products.csv;type=text/csv" http://localhost:8000/upload
 📦 Example Response:
 ```json
 {
-    "stored": 20,
-    "failed": []
+    "stored": 19,
+    "failed": [
+        {
+            "sku": "SHIRT-PLN-L",
+            "error": "Validation failed"
+        }
+    ]
 }
 ```
 
