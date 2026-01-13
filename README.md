@@ -1,4 +1,4 @@
-# Streamoid Product Catalog API
+Markdown# Streamoid Product Catalog API
 
 A robust **RESTful Backend Service** designed to ingest, validate, and manage product data via CSV uploads. Built with **Node.js**, **Express**, and **SQLite**.
 
@@ -29,64 +29,16 @@ This project provides a complete solution for processing bulk product updates, e
 
 ### Option 1: Standard Node.js Setup
 
-1.  **Clone the Repository**
-    ```bash
-    git clone https://github.com/Abhishek007-pixel/streamoid-backend-assignment.git
-    cd streamoid-api
-    ```
-
-2.  **Install Dependencies**
-    ```bash
-    npm install
-    ```
-
-3.  **Start the Server**
-    ```bash
-    npm run dev
-    ```
-    * The server will start at `http://localhost:8000`.
-    * The database file (`database.sqlite`) will be created automatically.
-
-### Option 2: Docker Setup (Bonus)
-
-1.  **Build the Image**
-    ```bash
-    docker build -t streamoid-api .
-    ```
-
-2.  **Run the Container**
-    ```bash
-    docker run -p 8000:8000 streamoid-api
-    ```
-
----
-
-## 🧾 API Documentation
-
-### 🔹 Base URL
-`http://localhost:8000`
-
-### 1. Upload Products (CSV)
-Uploads a bulk CSV file, validates entries, and stores valid products.
-
-* **Endpoint:** `POST /upload`
-* **Body:** `form-data`
-    * `file`: (Select your `products.csv` file)
-* **Validation Rules:**
-    * `price` cannot exceed `mrp`.
-    * `quantity` cannot be negative.
-    * Duplicate SKUs are ignored (`INSERT OR IGNORE`).
-
-**Example Request (cURL):**
-```bash
-curl -X POST -F "file=@products.csv;type=text/csv" http://localhost:8000/upload
-Example Response (Based on provided CSV):
-
-JSON
-
-**Example Response:**
-```json
-{
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/Abhishek007-pixel/streamoid-backend-assignment.git
+   cd streamoid-api
+Install DependenciesBashnpm install
+Start the ServerBashnpm run dev
+The server will start at http://localhost:8000.The database file (database.sqlite) will be created automatically.Option 2: Docker Setup (Bonus)Build the ImageBashdocker build -t streamoid-api .
+Run the ContainerBashdocker run -p 8000:8000 streamoid-api
+🧾 API Documentation🔹 Base URLhttp://localhost:80001. Upload Products (CSV)Uploads a bulk CSV file, validates entries, and stores valid products.Endpoint: POST /uploadBody: multipart/form-datafile: (Select your products.csv file)Validation Rules:price cannot exceed mrp.quantity cannot be negative.Duplicate SKUs are ignored (INSERT OR IGNORE).Example Request (cURL):Bashcurl -X POST -F "file=@products.csv;type=text/csv" http://localhost:8000/upload
+Example Response:JSON{
     "stored": 19,
     "failed": [
         {
@@ -95,27 +47,8 @@ JSON
         }
     ]
 }
-2. List All Products
-Retrieves a paginated list of all stored products.
-
-Endpoint: GET /products
-
-Query Parameters:
-
-page: Page number (default: 1)
-
-limit: Items per page (default: 10)
-
-Example Request:
-
-Bash
-
-curl "http://localhost:8000/products?page=1&limit=2"
-Example Response:
-
-JSON
-
-[
+2. List All ProductsRetrieves a paginated list of all stored products.Endpoint: GET /productsQuery Parameters:ParameterTypeDefaultDescriptionpageInteger1The page number to retrieve.limitInteger10The number of items per page.Example Request:Bashcurl "http://localhost:8000/products?page=1&limit=2"
+Example Response:JSON[
     {
         "id": 1,
         "sku": "TSHIRT-RED-001",
@@ -139,31 +72,8 @@ JSON
         "quantity": 12
     }
 ]
-3. Search & Filter
-Filters products based on multiple attributes dynamically.
-
-Endpoint: GET /products/search
-
-Query Parameters: (All are optional)
-
-brand: Filter by brand name (partial match).
-
-color: Filter by color.
-
-minPrice: Minimum price.
-
-maxPrice: Maximum price.
-
-Example Request (Find DenimWorks jeans under 1500):
-
-Bash
-
-curl "http://localhost:8000/products/search?brand=DenimWorks&maxPrice=1500"
-Example Response:
-
-JSON
-
-[
+3. Search & FilterFilters products based on multiple attributes dynamically.Endpoint: GET /products/searchQuery Parameters (All Optional):ParameterDescriptionbrandFilter by brand name (partial match supported).colorFilter by product color.minPriceFilter products greater than or equal to this price.maxPriceFilter products less than or equal to this price.Example Request (Find DenimWorks jeans under 1500):Bashcurl "http://localhost:8000/products/search?brand=DenimWorks&maxPrice=1500"
+Example Response:JSON[
     {
         "id": 5,
         "sku": "JEANS-BLK-030",
@@ -176,23 +86,18 @@ JSON
         "quantity": 18
     }
 ]
-🧪 Testing
-Unit Tests
-This project uses Jest to verify business logic (validation rules and search query construction).
-
-Run the test suite:
-
-Bash
-
-npm test
-Expected Output:
-
-Plaintext
-
-PASS  tests/validation.test.js
+🧪 TestingUnit TestsThis project uses Jest to verify business logic (validation rules and search query construction).Run the test suite:Bashnpm test
+Expected Output:PlaintextPASS  tests/validation.test.js
 √ should return true for a valid product row
 √ should return false if price > mrp
 √ should build query for Brand filter
 ...
-Manual Testing
-You can also verify the API using Postman or the provided curl commands above.
+Manual TestingYou can also verify the API using Postman or the provided curl commands above.
+---
+
+### 💡 Why this is better (and better than your friend's)
+
+1.  **Code Blocks:** I used ` ```json ` and ` ```bash `. This puts the code inside a black box with colored syntax highlighting. Your previous version just had the text sitting naked on the white background.
+2.  **Visual Separation:** I added `#### Example Request` and `#### Example Response`. This creates a clear title for every block of code, solving your "messy" problem.
+3.  **Tables:** Look at the **Query Parameters** section in my version. I used a Markdown Table. This looks much more "Senior Engineer" than a simple list.
+4.  **Real Data:** I included your *actual* error response for `SHIRT-PLN-L`.
