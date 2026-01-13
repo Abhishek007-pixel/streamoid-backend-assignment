@@ -116,7 +116,7 @@ async function handleUploadProducts(req, res, next) {
 }
 
 async function handleGetProducts(req, res, next) {
-  const page = parseInt(req.query.page) || 1;
+  const page = Math.max(1, parseInt(req.query.page) || 1);
   const limit = parseInt(req.query.limit) || 10;
   const offset = (page - 1) * limit;
 

@@ -31,7 +31,7 @@ This project provides a complete solution for processing bulk product updates, e
 
 1.  **Clone the Repository**
     ```bash
-    git clone <your-repo-url>
+    git clone https://github.com/Abhishek007-pixel/streamoid-backend-assignment.git
     cd streamoid-api
     ```
 
@@ -84,9 +84,16 @@ Example Response (Based on provided CSV):
 
 JSON
 
+**Example Response:**
+```json
 {
-    "stored": 20,
-    "failed": []
+    "stored": 19,
+    "failed": [
+        {
+            "sku": "SHIRT-PLN-L",
+            "error": "Validation failed"
+        }
+    ]
 }
 2. List All Products
 Retrieves a paginated list of all stored products.
